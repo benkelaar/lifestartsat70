@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'lifestartsat70';
+  title = 'Het Leven begint bij 70';
 }
