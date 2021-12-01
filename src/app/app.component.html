@@ -1,16 +1,12 @@
-<h1>Welcome to {{ title }}!</h1>
-<ul>
-  <li>
-    <h2><a routerLink="/">home</a></h2>
-  </li>
-  <li>
-    <h2><a routerLink="/creative">creative</a></h2>
-  </li>
-  <li>
-    <h2><a routerLink="/active">active</a></h2>
-  </li>
-  <li>
-    <h2><a routerLink="/social">social</a></h2>
-  </li>
-</ul>
-<router-outlet></router-outlet>
+<header>
+  <h1>Het leven begint bij 70</h1>
+  <nav>
+    <a routerLink="/">home</a>
+    <a routerLink="/creative">creative</a>
+    <a routerLink="/active">active</a>
+    <a routerLink="/social">social</a>
+  </nav>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
