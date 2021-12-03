@@ -1,12 +1,14 @@
-div {
-  width: 20rem;
-  height: 10rem;
-  margin: auto;
+rect {
+  width: 320px;
+  height: 160px;
 
-  border: 4px solid #ababab;
-  border-radius: 1rem;
+  fill: transparent;
+}
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+text, rect, line {
+  stroke: var(--text-color);
+}
+
+rect, line {
+  stroke-width: 4px;
 }

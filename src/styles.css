@@ -1,10 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 
+:root {
+  --text-color: #ababab;
+  --highlight-color: #efefef;
+}
+
 html, body {
   height: 100%;
+  margin: 0;
 }
 
 * {
     font-family: sans-serif;
-    color: #ababab;
+    color: var(--text-color);
 }
