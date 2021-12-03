@@ -1,4 +1,5 @@
 import { Component, Input, HostListener } from '@angular/core';
+import { GraphNode } from 'src/app/decision-tree.service';
 
 const nodeWidth = 320;
 const textOffset = 60;
@@ -19,7 +20,9 @@ class NodeDimensions {
   readonly boxBottomRight: Point;
   readonly midPoint: Point
 
-  readonly textLeft: number;
+  readonly boxTextLeft: number;
+  readonly leftText: Point;
+  readonly rightText: Point;
 
   constructor(
     readonly windowWidth: number,
@@ -29,7 +32,10 @@ class NodeDimensions {
     this.boxTopLeft = this.midPoint.offset(-nodeWidth/2, -nodeWidth/4)
     this.boxBottomRight = this.boxTopLeft.offset(nodeWidth, nodeWidth / 2);
 
-    this.textLeft = this.boxTopLeft.x + textOffset;
+    this.boxTextLeft = this.boxTopLeft.x + textOffset;
+    let lineTextY = this.midPoint.y - textOffset / 4
+    this.leftText = new Point(this.boxTopLeft.x - 160, lineTextY)
+    this.rightText = new Point(this.boxBottomRight.x + textOffset, lineTextY)
   }
 }
 
@@ -39,7 +45,7 @@ class NodeDimensions {
   styleUrls: ['./node.component.css']
 })
 export class NodeComponent {
-  @Input() text: string = '';
+  @Input() selected: GraphNode | null = null;
 
   dimensions = new NodeDimensions(window.innerWidth, window.innerHeight);
 
@@ -50,4 +56,11 @@ export class NodeComponent {
     this.dimensions = new NodeDimensions(window.innerWidth, window.innerHeight);
   }
 
+  selectLeft(): void {
+    this.selected = this.selected?.left!!
+  }
+
+  selectRight(): void {
+    this.selected = this.selected?.right!!
+  }
 }

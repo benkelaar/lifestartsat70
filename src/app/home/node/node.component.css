@@ -1,8 +1,19 @@
+.hover {
+  stroke-width: 0;
+  height: 100%;
+  width: 50%;
+}
+
+.hover:hover {
+  fill: var(--highlight-color);
+  cursor: pointer;
+}
+
 rect {
   width: 320px;
   height: 160px;
 
-  fill: transparent;
+  fill: white;
 }
 
 text, rect, line {
