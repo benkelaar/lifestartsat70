@@ -2,6 +2,8 @@
 
 Small static website to select something to do when you're retired
 
+Based on https://media-codings.com/articles/building-static-but-progressive-web-apps-with-angular to have it both static and progressive.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
