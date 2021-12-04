@@ -18,8 +18,38 @@ rect {
 
 text, rect, line {
   stroke: var(--text-color);
+  transform: translate(0%);
+}
+
+#graph.left * {
+  transform: translate(100%, 0%);
+  transition: 3s ease-in-out transform;
 }
 
 rect, line {
   stroke-width: 4px;
+}
+
+@keyframes goLeft {
+  from {
+    transform: translate(0%, 0%);
+  }
+  50% {
+    transform: translate(100%, 0%);
+  }
+  to {
+    transform: translate(100%, -100%);
+  }
+}
+
+@keyframes goRight {
+  from {
+    transform: translate(0%, 0%);
+  }
+  50% {
+    transform: translate(-100%, 0%);
+  }
+  to {
+    transform: translate(-100%, -100%);
+  }
 }

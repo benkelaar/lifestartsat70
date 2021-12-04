@@ -1,13 +1,16 @@
 <svg id="graph" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-  <rect *ngIf="selected?.left" class="hover" x="0" y="0" (click)="selectLeft()"/>
-  <rect *ngIf="selected?.right" class="hover" [attr.x]="dimensions.midPoint.x" y="0"  (click)="selectRight()"/>
+  <rect *ngIf="selected?.left" class="hover" x="0" y="0" (click)="selectLeft()"></rect>
+  <rect *ngIf="selected?.right" class="hover" [attr.x]="dimensions.midPoint.x" y="0"  (click)="selectRight()"></rect>
 
-  <rect [attr.x]="dimensions.boxTopLeft.x" [attr.y]="dimensions.boxTopLeft.y" rx="30" ry="30"/>
+  <rect [attr.x]="dimensions.boxTopLeft.x" [attr.y]="dimensions.boxTopLeft.y" rx="30" ry="30"></rect>
   <text [attr.x]="dimensions.boxTextLeft" [attr.y]="dimensions.midPoint.y">{{selected?.question}}</text>
   
-  <line *ngIf="selected?.parent" [attr.x1]="dimensions.midPoint.x" [attr.x2]="dimensions.midPoint.x" [attr.y1]="0" [attr.y2]="dimensions.boxTopLeft.y"/>
-  <line *ngIf="selected?.left" x1="0" [attr.x2]="dimensions.boxTopLeft.x" [attr.y1]="dimensions.midPoint.y" [attr.y2]="dimensions.midPoint.y"/>
+  <line *ngIf="selected?.parent" [attr.x1]="dimensions.midPoint.x" [attr.x2]="dimensions.midPoint.x" [attr.y1]="0" [attr.y2]="dimensions.boxTopLeft.y"></line>
+  <line *ngIf="selected?.left" [attr.x1]="-dimensions.midPoint.x" [attr.x2]="dimensions.boxTopLeft.x" [attr.y1]="dimensions.midPoint.y" [attr.y2]="dimensions.midPoint.y"/>
   <text *ngIf="selected?.left" [attr.x]="dimensions.leftText.x" [attr.y]="dimensions.leftText.y">{{selected?.left?.title}}</text>
-  <line *ngIf="selected?.right" [attr.x1]="dimensions.boxBottomRight.x" [attr.x2]="dimensions.windowWidth" [attr.y1]="dimensions.midPoint.y" [attr.y2]="dimensions.midPoint.y"/>
-  <text *ngIf="selected?.left" [attr.x]="dimensions.rightText.x" [attr.y]="dimensions.rightText.y">{{selected?.right?.title}}</text>
+  <line *ngIf="selected?.right" [attr.x1]="dimensions.boxBottomRight.x" [attr.x2]="dimensions.windowWidth+dimensions.midPoint.x" [attr.y1]="dimensions.midPoint.y" [attr.y2]="dimensions.midPoint.y"/>
+  <text *ngIf="selected?.right" [attr.x]="dimensions.rightText.x" [attr.y]="dimensions.rightText.y">{{selected?.right?.title}}</text>
+
+  <line [attr.x1]="-dimensions.midPoint.x" [attr.x2]="-dimensions.midPoint.x" [attr.y1]="dimensions.midPoint.y" [attr.y2]="dimensions.windowWidth+dimensions.midPoint.y"/>
+  <line [attr.x1]="dimensions.windowWidth+dimensions.midPoint.x" [attr.x2]="dimensions.windowWidth+dimensions.midPoint.x" [attr.y1]="dimensions.midPoint.y" [attr.y2]="dimensions.windowWidth+dimensions.midPoint.y"/>
 </svg>
