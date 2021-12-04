@@ -70,6 +70,6 @@ export class NodeComponent {
   }
 
   graphStyle() {
-    return {'background-image': 'url(/assets/photos/' + this.selected?.photo + ')' };
+    return {'background-image': 'url(/assets/photos/' + this.selected?.photo + '.jpg)' };
   }
 }
