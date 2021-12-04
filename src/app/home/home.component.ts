@@ -7,6 +7,7 @@ import { DecisionTreeService } from '../decision-tree.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  homeLogo = "/assets/icons/home-icon.png";
 
   constructor(readonly treeService: DecisionTreeService) { }
 

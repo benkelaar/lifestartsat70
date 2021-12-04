@@ -2,7 +2,8 @@
 
 :root {
   --text-color: #ababab;
-  --highlight-color: #efefef;
+  --opaque-highlight: #efefef;
+  --transparent-highlight: #00000011;
 }
 
 html, body {

@@ -11,14 +11,18 @@ class Point {
   ) {}
 
   offset(deltaX: number, deltaY: number) {
-    return new Point(this.x + deltaX, this.y + deltaY)
+    return new Point(this.x + deltaX, this.y + deltaY);
+  }
+
+  boxOffSet(boxWidth: number = nodeWidth) {
+    return this.offset(boxWidth, boxWidth / 2);
   }
 }
 
 class NodeDimensions {
   readonly boxTopLeft: Point;
   readonly boxBottomRight: Point;
-  readonly midPoint: Point
+  readonly midPoint: Point;
 
   readonly boxTextLeft: number;
   readonly leftText: Point;
@@ -28,14 +32,15 @@ class NodeDimensions {
     readonly windowWidth: number,
     readonly windowHeight: number
     ) {
-    this.midPoint = new Point(windowWidth / 2, windowHeight / 2)
-    this.boxTopLeft = this.midPoint.offset(-nodeWidth/2, -nodeWidth/4)
-    this.boxBottomRight = this.boxTopLeft.offset(nodeWidth, nodeWidth / 2);
+    this.midPoint = new Point(windowWidth / 2, windowHeight / 2);
+    this.boxTopLeft = this.midPoint.boxOffSet(-nodeWidth/2);
+    this.boxBottomRight = this.boxTopLeft.boxOffSet();
 
     this.boxTextLeft = this.boxTopLeft.x + textOffset;
-    let lineTextY = this.midPoint.y - textOffset / 4
-    this.leftText = new Point(this.boxTopLeft.x - 160, lineTextY)
-    this.rightText = new Point(this.boxBottomRight.x + textOffset, lineTextY)
+
+    let lineTextY = this.midPoint.y - textOffset / 4;
+    this.leftText = new Point(this.boxTopLeft.x - 160, lineTextY);
+    this.rightText = new Point(this.boxBottomRight.x + textOffset, lineTextY);
   }
 }
 
