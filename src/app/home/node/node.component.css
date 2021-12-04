@@ -1,7 +1,27 @@
+svg {
+  background-size: cover;
+}
+
+
+text {
+  fill: white;
+  stroke: white;
+}
+
+rect, line {
+  stroke: var(--text-color);
+  transform: translate(0%);
+}
+
+rect, line {
+  stroke-width: 4px;
+}
+
 .hover {
   stroke-width: 0;
   height: 100%;
   width: 50%;
+  fill: transparent;
 }
 
 .hover:hover {
@@ -9,25 +29,16 @@
   cursor: pointer;
 }
 
-rect {
+#node {
   width: 320px;
   height: 160px;
 
   fill: white;
 }
 
-text, rect, line {
+#question {
+  fill: var(--text-color);
   stroke: var(--text-color);
-  transform: translate(0%);
-}
-
-#graph.left * {
-  transform: translate(100%, 0%);
-  transition: 3s ease-in-out transform;
-}
-
-rect, line {
-  stroke-width: 4px;
 }
 
 @keyframes goLeft {

@@ -8,6 +8,7 @@ export class GraphNode {
     readonly question: string,
     readonly left: GraphNode | null = null,
     readonly right: GraphNode | null = null,
+    readonly photo: string = 'herma.jpg',
   ) {
     if (left) left.parent = this;
     if (right) right.parent = this;

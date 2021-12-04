@@ -20,11 +20,11 @@ class Point {
 }
 
 class NodeDimensions {
-  readonly boxTopLeft: Point;
-  readonly boxBottomRight: Point;
+  readonly nodeStart: Point;
+  readonly nodeEnd: Point;
   readonly midPoint: Point;
 
-  readonly boxTextLeft: number;
+  readonly textStart: number;
   readonly leftText: Point;
   readonly rightText: Point;
 
@@ -33,14 +33,14 @@ class NodeDimensions {
     readonly windowHeight: number
     ) {
     this.midPoint = new Point(windowWidth / 2, windowHeight / 2);
-    this.boxTopLeft = this.midPoint.boxOffSet(-nodeWidth/2);
-    this.boxBottomRight = this.boxTopLeft.boxOffSet();
+    this.nodeStart = this.midPoint.boxOffSet(-nodeWidth/2);
+    this.nodeEnd = this.nodeStart.boxOffSet();
 
-    this.boxTextLeft = this.boxTopLeft.x + textOffset;
+    this.textStart = this.nodeStart.x + textOffset;
 
     let lineTextY = this.midPoint.y - textOffset / 4;
-    this.leftText = new Point(this.boxTopLeft.x - 160, lineTextY);
-    this.rightText = new Point(this.boxBottomRight.x + textOffset, lineTextY);
+    this.leftText = new Point(this.nodeStart.x - 160, lineTextY);
+    this.rightText = new Point(this.nodeEnd.x + textOffset, lineTextY);
   }
 }
 
@@ -52,13 +52,13 @@ class NodeDimensions {
 export class NodeComponent {
   @Input() selected: GraphNode | null = null;
 
-  dimensions = new NodeDimensions(window.innerWidth, window.innerHeight);
+  d = new NodeDimensions(window.innerWidth, window.innerHeight);
 
   constructor() {}
 
   @HostListener('window:resize')
   handleResize(): void {
-    this.dimensions = new NodeDimensions(window.innerWidth, window.innerHeight);
+    this.d = new NodeDimensions(window.innerWidth, window.innerHeight);
   }
 
   selectLeft(): void {
@@ -67,5 +67,9 @@ export class NodeComponent {
 
   selectRight(): void {
     this.selected = this.selected?.right!!
+  }
+
+  graphStyle() {
+    return {'background-image': 'url(/assets/photos/' + this.selected?.photo + ')' };
   }
 }
